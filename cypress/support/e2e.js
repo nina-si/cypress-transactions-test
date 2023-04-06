@@ -1,20 +1,9 @@
-// ***********************************************************
-// This example support/e2e.js is processed and
-// loaded automatically before your test files.
-//
-// This is a great place to put global configuration and
-// behavior that modifies Cypress.
-//
-// You can change the location of this file or turn off
-// automatically serving support files with the
-// 'supportFile' configuration option.
-//
-// You can read more here:
-// https://on.cypress.io/configuration
-// ***********************************************************
+import LoginAction from './actions/LoginAction';
+import './commands';
 
-// Import commands.js using ES2015 syntax:
-import './commands'
+before(() => {
+  const loginAction = new LoginAction();
+  cy.visit('https://app.fridayfinance.com/auth/signin');
 
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
+  loginAction.logIn('ninok1102@gmail.com', 'TestingFeature1!', '31616294112');
+});
