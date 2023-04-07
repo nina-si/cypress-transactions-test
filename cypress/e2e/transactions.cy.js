@@ -1,7 +1,6 @@
 import TransactionAction from '../support/actions/TransactionAction';
 import TransactionsCreateFormRepository from '../support/repositories/transactions/TransactionsCreateFormRepository';
 import TransactionsViewRepository from '../support/repositories/transactions/TransactionsViewRepository';
-import { users } from '../fixtures/users.json';
 
 const transactionsRepo = new TransactionsViewRepository();
 const transactionFormRepo = new TransactionsCreateFormRepository();

@@ -1,7 +1,7 @@
 import AccountAction from '../support/actions/AccountAction';
 import AccountCreateFormRepository from '../support/repositories/accounts/AccountCreateFormRepository';
 import AccountsViewRepository from '../support/repositories/accounts/AccountsViewRepository';
-import users from '../fixtures/users.json';
+import { generateRandomString } from '../support/utils/utils';
 
 const accountsViewRepo = new AccountsViewRepository();
 const accountCreateFormRepo = new AccountCreateFormRepository();
@@ -23,10 +23,13 @@ describe('Accounts View', function () {
 
     accountsViewRepo.getCreateRegisterBtn().click();
 
-    accountAction.fillNewAccount('Test bank1', 'Test account1');
+    const bankName = 'Bank ' + generateRandomString();
+    const accountName = 'Account ' + generateRandomString();
+
+    accountAction.fillNewAccount(bankName, accountName);
     accountsViewRepo
       .getFirstAccountFromList()
-      .contains('td', 'Test bank1')
+      .contains('td', bankName)
       .should('exist')
       .and('be.visible');
   });
