@@ -7,7 +7,8 @@ class LoginAction {
   logIn(email, password, phone) {
     loginRepo.getEmailField().clear().type(email, { delay: 30 });
     loginRepo.getPasswordField().clear().type(password, { delay: 30 });
-    cy.wait(3000);
+    // added delay, as too fast requests are blocked
+    cy.wait(2000);
     loginRepo.getConfirmLoginBtn().click();
 
     cy.pause();
