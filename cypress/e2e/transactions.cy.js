@@ -1,14 +1,15 @@
 import TransactionAction from '../support/actions/TransactionAction';
 import TransactionsCreateFormRepository from '../support/repositories/transactions/TransactionsCreateFormRepository';
 import TransactionsViewRepository from '../support/repositories/transactions/TransactionsViewRepository';
+import { testUser } from '../support/utils/utils';
 
 const transactionsRepo = new TransactionsViewRepository();
 const transactionFormRepo = new TransactionsCreateFormRepository();
 const transactionAction = new TransactionAction();
-let initialTransactionsCount = 0;
 
 describe('Transactions View', function () {
   beforeEach(() => {
+    cy.login(testUser.email, testUser.password, testUser.phone);
     cy.visit('/transactions');
   });
 

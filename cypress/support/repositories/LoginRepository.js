@@ -18,8 +18,12 @@ class LoginRepository {
   }
 
   getDigitCodeField() {
-    const inputId = cy.contains('label', '6-digit').for;
-    return cy.get(`input#${inputId}`);
+    return cy
+      .contains('label', '6-digit')
+      .invoke('attr', 'for')
+      .then((inputId) => {
+        return cy.get(`input#${inputId}`);
+      });
   }
 
   getConfirmDigitCodeBtn() {

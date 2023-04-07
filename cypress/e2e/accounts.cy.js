@@ -1,6 +1,7 @@
 import AccountAction from '../support/actions/AccountAction';
 import AccountCreateFormRepository from '../support/repositories/accounts/AccountCreateFormRepository';
 import AccountsViewRepository from '../support/repositories/accounts/AccountsViewRepository';
+import { testUser } from '../support/utils/utils';
 
 const accountsViewRepo = new AccountsViewRepository();
 const accountCreateFormRepo = new AccountCreateFormRepository();
@@ -8,7 +9,7 @@ const accountAction = new AccountAction();
 
 describe('Accounts View', function () {
   beforeEach(() => {
-    cy.login('email', 'pass', 'num');
+    cy.login(testUser.email, testUser.password, testUser.phone);
     cy.visit('/accounts');
   });
 
