@@ -24,12 +24,7 @@ class TransactionsCreateFormRepository {
   }
 
   getTransactionTypeField() {
-    return cy
-      .contains('label', 'Inflow or outflow')
-      .invoke('attr', 'for')
-      .then((inputId) => {
-        return cy.get(`div#${inputId}`);
-      });
+    return cy.getElementByItsLabel('Inflow or outflow', 'div');
   }
 
   chooseTransactionType(type) {
@@ -43,12 +38,7 @@ class TransactionsCreateFormRepository {
   getCategoryField() {}
 
   getAmountField() {
-    return cy
-      .contains('label', 'Amount')
-      .invoke('attr', 'for')
-      .then((inputId) => {
-        return cy.get(`input#${inputId}`);
-      });
+    return cy.getElementByItsLabel('Amount');
   }
 
   getCancelTransactionBtn() {}
@@ -57,7 +47,7 @@ class TransactionsCreateFormRepository {
     return this.getRegisterTransactionForm().find('button[type="submit"]');
   }
 
-  getFirstDate() {
+  getFirstDateInDropdown() {
     return cy.get('button[data-calendar-row="1"]').first();
   }
 }

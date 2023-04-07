@@ -4,39 +4,19 @@ class AccountCreateFormRepository {
   }
 
   getBankNicknameField() {
-    return cy
-      .contains('label', 'Bank nickname')
-      .invoke('attr', 'for')
-      .then((inputId) => {
-        return cy.get(`input#${inputId}`);
-      });
+    return cy.getElementByItsLabel('Bank nickname');
   }
 
   getAccountNicknameField() {
-    return cy
-      .contains('label', 'Account nickname')
-      .invoke('attr', 'for')
-      .then((inputId) => {
-        return cy.get(`input#${inputId}`);
-      });
+    return cy.getElementByItsLabel('Account nickname');
   }
 
   getCurrencyField() {
-    return cy
-      .contains('label', 'Currency')
-      .invoke('attr', 'for')
-      .then((inputId) => {
-        return cy.get(`input#${inputId}`);
-      });
+    return cy.getElementByItsLabel('Currency');
   }
 
   getBalanceField() {
-    return cy
-      .contains('label', 'Balance')
-      .invoke('attr', 'for')
-      .then((inputId) => {
-        return cy.get(`input#${inputId}`);
-      });
+    return cy.getElementByItsLabel('Balance');
   }
 
   getAccountSaveBtn() {

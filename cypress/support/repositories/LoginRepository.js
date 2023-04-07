@@ -1,6 +1,4 @@
 class LoginRepository {
-  constructor() {}
-
   getLoginBtn() {
     return cy.contains('.button', 'Login');
   }
@@ -18,12 +16,7 @@ class LoginRepository {
   }
 
   getDigitCodeField() {
-    return cy
-      .contains('label', '6-digit')
-      .invoke('attr', 'for')
-      .then((inputId) => {
-        return cy.get(`input#${inputId}`);
-      });
+    return cy.getElementByItsLabel('6-digit');
   }
 
   getConfirmDigitCodeBtn() {

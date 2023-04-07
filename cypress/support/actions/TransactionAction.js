@@ -13,7 +13,7 @@ class TransactionAction {
     registerFormRepo.chooseTransactionType('Inflow').click();
 
     registerFormRepo.getDateField().click();
-    registerFormRepo.getFirstDate().click();
+    registerFormRepo.getFirstDateInDropdown().click();
 
     registerFormRepo.getAmountField().focus().type(10000);
   }
