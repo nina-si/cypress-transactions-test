@@ -1,7 +1,7 @@
 import AccountAction from '../support/actions/AccountAction';
 import AccountCreateFormRepository from '../support/repositories/accounts/AccountCreateFormRepository';
 import AccountsViewRepository from '../support/repositories/accounts/AccountsViewRepository';
-import { testUser } from '../support/utils/utils';
+import users from '../fixtures/users.json';
 
 const accountsViewRepo = new AccountsViewRepository();
 const accountCreateFormRepo = new AccountCreateFormRepository();
@@ -9,7 +9,9 @@ const accountAction = new AccountAction();
 
 describe('Accounts View', function () {
   beforeEach(() => {
-    cy.login(testUser.email, testUser.password, testUser.phone);
+    cy.fixture('users').then((users) => {
+      cy.login(users.user1.email, users.user1.password, users.user1.phone);
+    });
     cy.visit('/accounts');
   });
 

@@ -1,7 +1,7 @@
 import TransactionAction from '../support/actions/TransactionAction';
 import TransactionsCreateFormRepository from '../support/repositories/transactions/TransactionsCreateFormRepository';
 import TransactionsViewRepository from '../support/repositories/transactions/TransactionsViewRepository';
-import { testUser } from '../support/utils/utils';
+import { users } from '../fixtures/users.json';
 
 const transactionsRepo = new TransactionsViewRepository();
 const transactionFormRepo = new TransactionsCreateFormRepository();
@@ -9,7 +9,9 @@ const transactionAction = new TransactionAction();
 
 describe('Transactions View', function () {
   beforeEach(() => {
-    cy.login(testUser.email, testUser.password, testUser.phone);
+    cy.fixture('users').then((users) => {
+      cy.login(users.user1.email, users.user1.password, users.user1.phone);
+    });
     cy.visit('/transactions');
   });
 

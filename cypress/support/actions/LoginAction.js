@@ -7,25 +7,14 @@ class LoginAction {
   logIn(email, password, phone) {
     loginRepo.getEmailField().clear().type(email, { delay: 30 });
     loginRepo.getPasswordField().clear().type(password, { delay: 30 });
-    cy.wait(4000);
+    cy.wait(3000);
     loginRepo.getConfirmLoginBtn().click();
 
-    // cy.request(`https://receive-smss.com/sms/${phone}`).then((html) => {
-    //   const digitLine = html.body.match(/.*Friday.*/);
-
-    //   cy.log(
-    //     '----------------' +
-    //       digitLine[0].toString().split('<b>')[1].slice(0, 6) +
-    //       '---------------------------------------------'
-    //   );
-    // });
-
     cy.pause();
-    // .then((digitCode) => {
-    //   loginRepo.getDigitCodeField().clear().type(digitCode, { delay: 30 });
-    //   cy.wait(2000);
-    //   loginRepo.getConfirmDigitCodeBtn().click();
-    // });
+
+    // QA should provide SMS-code if asked by a system.
+    // For test user digit code could be found here: https://receive-smss.com/sms/31616294112/
+    // Then QA should resume testing in Cypress GUI
   }
 }
 

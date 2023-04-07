@@ -1,9 +1,3 @@
-export const testUser = {
-  email: 'ninok1102@gmail.com',
-  password: 'TestingFeature1!',
-  phone: '31616294112',
-};
-
 // retrieve One-Time-Password from sms provider
 
 export const fetchDigitCode = async (phoneNumber) => {
