@@ -26,15 +26,14 @@ describe('Accounts View', function () {
     const bankName = 'Bank ' + generateRandomString();
     const accountName = 'Account ' + generateRandomString();
 
-    accountAction.fillNewAccount(bankName, accountName);
+    accountAction.createNewAccount(bankName, accountName);
     accountsViewRepo
       .getFirstAccountFromList()
-      .contains('td', bankName)
-      .should('exist')
+      .should('contain', bankName)
       .and('be.visible');
   });
 
-  it('does not saves account when required fields are incomplete', function () {
+  it('does not save account when required fields are empty', function () {
     accountsViewRepo
       .getCreateRegisterBtn()
       .should('be.visible')
@@ -42,8 +41,54 @@ describe('Accounts View', function () {
 
     accountsViewRepo.getCreateRegisterBtn().click();
 
+    accountCreateFormRepo.getBalanceField().click().type(200);
+
     accountCreateFormRepo.getAccountSaveBtn().click();
 
     cy.get('[id$=-error').should('have.lengthOf', 2);
+    accountCreateFormRepo
+      .getCreateRegisterModal()
+      .should('exist')
+      .and('be.visible');
+  });
+
+  it('removes register from list', function () {
+    accountsViewRepo.getFirstRegisterName().then((prevBankName) => {
+      cy.log(prevBankName);
+      accountsViewRepo
+        .getRegisterOptionsBtn()
+        .should('be.visible')
+        .and('be.enabled');
+
+      accountsViewRepo.getRegisterOptionsBtn().click();
+
+      accountsViewRepo.getRegisterOptionsDropdown().should('be.visible');
+      accountsViewRepo
+        .getRegisterOptionsDropdown()
+        .contains('Remove register')
+        .click();
+
+      accountsViewRepo
+        .getRemoveRegisterModal()
+        .should('be.visible')
+        .and('contain', prevBankName);
+
+      cy.url().should('include', 'remove-consent');
+
+      accountsViewRepo
+        .getConfirmRemoveRegisterBtn()
+        .should('be.visible')
+        .and('be.enabled');
+
+      accountsViewRepo
+        .getCancelRemoveRegisterBtn()
+        .should('be.visible')
+        .and('be.enabled');
+
+      accountsViewRepo.getConfirmRemoveRegisterBtn().click();
+      accountsViewRepo
+        .getFirstAccountFromList()
+        .should('not.contain', prevBankName);
+    });
   });
 });

@@ -3,16 +3,18 @@ import AccountCreateFormRepository from '../repositories/accounts/AccountCreateF
 const registerFormRepo = new AccountCreateFormRepository();
 
 class AccountAction {
-  // Method to fill in required fields for the NEW account:
+  // Method to create a NEW account:
 
-  fillNewAccount(bankNickname, AccountNickname) {
+  createNewAccount(bankNickname, accountNickname, balance = 10000) {
     registerFormRepo.getBankNicknameField().click().clear().type(bankNickname);
 
     registerFormRepo
       .getAccountNicknameField()
       .click()
       .clear()
-      .type(AccountNickname);
+      .type(accountNickname);
+
+    registerFormRepo.getBalanceField().click().type(balance);
 
     registerFormRepo.getAccountSaveBtn().click();
   }
