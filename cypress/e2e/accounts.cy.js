@@ -91,4 +91,46 @@ describe('Accounts View', function () {
         .should('not.contain', prevBankName);
     });
   });
+
+  it('cancels register removing', function () {
+    cy.wait(1000);
+    accountsViewRepo.getFirstRegisterName().then((prevBankName) => {
+      cy.log(prevBankName);
+      accountsViewRepo
+        .getRegisterOptionsBtn()
+        .should('be.visible')
+        .and('be.enabled');
+
+      accountsViewRepo.getRegisterOptionsBtn().click();
+
+      accountsViewRepo.getRegisterOptionsDropdown().should('be.visible');
+      accountsViewRepo
+        .getRegisterOptionsDropdown()
+        .contains('span', 'Remove register')
+        .click();
+
+      accountsViewRepo
+        .getRemoveRegisterModal()
+        .should('be.visible')
+        .and('contain', prevBankName);
+
+      cy.url().should('include', 'remove-consent');
+
+      accountsViewRepo
+        .getConfirmRemoveRegisterBtn()
+        .should('be.visible')
+        .and('be.enabled');
+
+      accountsViewRepo
+        .getCancelRemoveRegisterBtn()
+        .should('be.visible')
+        .and('be.enabled');
+
+      accountsViewRepo.getCancelRemoveRegisterBtn().click();
+      accountsViewRepo
+        .getFirstAccountFromList()
+        .should('contain', prevBankName)
+        .and('be.visible');
+    });
+  });
 });
