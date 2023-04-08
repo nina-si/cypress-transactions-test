@@ -19,7 +19,7 @@ class TransactionsViewRepository {
   }
 
   getTransactionsList() {
-    return cy.get('table tbody tr[tabindex="0"]');
+    return this.getTransactionsBlock().find('table tbody tr[tabindex="0"]');
   }
 }
 

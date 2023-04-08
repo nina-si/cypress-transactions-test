@@ -4,11 +4,11 @@ class TransactionsCreateFormRepository {
   }
 
   getCounterpartyField() {
-    return this.getRegisterTransactionForm().contains('Select counterparty');
+    return cy.getElementByItsLabel('Counterparty', 'div');
   }
 
   getBankField() {
-    return this.getRegisterTransactionForm().contains('Select bank');
+    return cy.getElementByItsLabel('Bank', 'div');
   }
 
   getBanksDropdown() {
@@ -20,7 +20,7 @@ class TransactionsCreateFormRepository {
   }
 
   getOwnerField() {
-    return this.getRegisterTransactionForm().contains('Tag a team member');
+    return cy.getElementByItsLabel('Transaction owner', 'div');
   }
 
   getTransactionTypeField() {
@@ -32,16 +32,23 @@ class TransactionsCreateFormRepository {
   }
 
   getDateField() {
-    return this.getRegisterTransactionForm().find('[placeholder="DD/MM/YYYY"]');
+    return cy.getElementByItsLabel('Date');
   }
 
-  getCategoryField() {}
+  getCategoryField() {
+    return cy.getElementByItsLabel('Category', 'div');
+  }
 
   getAmountField() {
     return cy.getElementByItsLabel('Amount');
   }
 
-  getCancelTransactionBtn() {}
+  getCancelTransactionBtn() {
+    return this.getRegisterTransactionForm().contains(
+      'button[type="button"]',
+      'Cancel'
+    );
+  }
 
   getConfirmTransactionBtn() {
     return this.getRegisterTransactionForm().find('button[type="submit"]');
