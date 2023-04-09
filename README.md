@@ -1,16 +1,17 @@
 # QA Challenge
 
-This repository contains UI tests for Friday Finance website.
+This repository contains UI tests for [Friday Finance website](https://www.fridayfinance.com/).
 Documentation with all test scenarios can be found [here](https://cottony-bosworth-fff.notion.site/Friday-Finance-QA-Challenge-Nina-Sitaeva-1bf52e73bee14a8f9f20115acf426db4)
 
 ![test results](./cypress/downloads/tests-result.JPG)
 
 ## Important:
 
-Tests run in headed mode. Once login data is confirmed, running is paused in order to check whether the verification code is needed.
+Tests run in headed mode. Once login data is confirmed, _**running is paused**_ in order to check whether the verification code is needed.
 
-> ❗ If it is not required (the main page is loaded), just **resume running**:
-> ![resume running](./cypress/downloads/resume-tests.JPG)
+> ❗❗❗ If it is not required (the main page is loaded), just **resume running**:
+
+![resume running](./cypress/downloads/resume-tests.JPG)
 
 If code is required, please follow these steps:
 
@@ -32,7 +33,7 @@ If code is required, please follow these steps:
 
 This will run all the tests in headed mode (don't forget to resume running after authorization❗).
 
-Or you can open Cypress GUI by following these steps:
+Or you can open _**Cypress GUI**_ by following these steps:
 
 4. Run in terminal:
    `npx cypress open`
