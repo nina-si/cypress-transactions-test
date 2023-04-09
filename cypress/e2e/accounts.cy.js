@@ -93,7 +93,8 @@ describe('Accounts View', function () {
   });
 
   it('cancels register removing', function () {
-    cy.wait(1000);
+    // wait for accounts list to be loaded
+    cy.wait(0);
     accountsViewRepo.getFirstRegisterName().then((prevBankName) => {
       cy.log(prevBankName);
       accountsViewRepo
@@ -102,6 +103,7 @@ describe('Accounts View', function () {
         .and('be.enabled');
 
       accountsViewRepo.getRegisterOptionsBtn().click();
+      cy.wait(300);
 
       accountsViewRepo.getRegisterOptionsDropdown().should('be.visible');
       accountsViewRepo
