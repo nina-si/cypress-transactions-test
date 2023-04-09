@@ -3,10 +3,14 @@
 This repository contains UI tests for Friday Finance website.
 Documentation with all test scenarios can be found [here](https://cottony-bosworth-fff.notion.site/Friday-Finance-QA-Challenge-Nina-Sitaeva-1bf52e73bee14a8f9f20115acf426db4)
 
+![test results](./cypress/downloads/tests-result.JPG)
+
 ## Important:
 
 Tests run in headed mode. Once login data is confirmed, running is paused in order to check whether the verification code is needed.
-If it is not required (the main page is loaded), just **resume running**:
+
+> ❗ If it is not required (the main page is loaded), just **resume running**:
+> ![resume running](./cypress/downloads/resume-tests.JPG)
 
 If code is required, please follow these steps:
 
@@ -26,7 +30,14 @@ If code is required, please follow these steps:
 4. Run tests:  
    `npm run test`
 
-This will run all the tests in headed mode (don't forget to resume running after authorization!).
+This will run all the tests in headed mode (don't forget to resume running after authorization❗).
 
-Or you can open Cypress GUI by following these steps: 4. Run in terminal:
-`npx cypress open` 5. Choose E2E Testing 6. Choose preferred browser 7. Now you can run all specs at once or choose one of them.
+Or you can open Cypress GUI by following these steps:
+
+4. Run in terminal:
+   `npx cypress open`
+5. Choose E2E Testing
+6. Choose preferred browser
+7. Now you can run all specs at once or choose one of them:
+
+![choose specs](./cypress/downloads/e2estart.JPG)
