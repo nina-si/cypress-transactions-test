@@ -1,7 +1,10 @@
 # QA Challenge
 
 This repository contains UI tests for [Friday Finance website](https://www.fridayfinance.com/).
+
 Documentation with all test scenarios can be found [here](https://cottony-bosworth-fff.notion.site/Friday-Finance-QA-Challenge-Nina-Sitaeva-1bf52e73bee14a8f9f20115acf426db4)
+
+Video of how to run the tests is [here](https://youtu.be/iCfdGVowJhs)
 
 ![test results](./cypress/downloads/tests-result.JPG)
 
@@ -28,7 +31,7 @@ If code is required, please follow these steps:
    `cd friday-finance-test`
 3. Install dependencies:  
    `npm install`
-4. Run tests:  
+4. Run all tests:  
    `npm run test`
 
 This will run all the tests in headed mode (don't forget to resume running after authorization❗).
