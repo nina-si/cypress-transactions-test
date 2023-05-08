@@ -1,6 +1,10 @@
 import AccountAction from '../support/actions/AccountAction';
 import AccountCreateFormRepository from '../support/repositories/accounts/AccountCreateFormRepository';
 import AccountsViewRepository from '../support/repositories/accounts/AccountsViewRepository';
+import {
+  graphqlOperationNames,
+  aliasQuery,
+} from '../support/utils/graphqlUtils';
 import { generateRandomString } from '../support/utils/utils';
 
 const accountsViewRepo = new AccountsViewRepository();
@@ -12,7 +16,13 @@ describe('Accounts View', function () {
     cy.fixture('users').then((users) => {
       cy.login(users.user1.email, users.user1.password, users.user1.phone);
     });
+    cy.intercept('POST', '/graphql', (req) => {
+      aliasQuery(req, graphqlOperationNames.GET_ACCOUNTS);
+    });
+
     cy.visit('/accounts');
+
+    cy.wait(`@gql${graphqlOperationNames.GET_ACCOUNTS}Query`);
   });
 
   it('creates new manual register', function () {
@@ -93,8 +103,6 @@ describe('Accounts View', function () {
   });
 
   it('cancels register removing', function () {
-    // wait for accounts list to be loaded
-    cy.wait(300);
     accountsViewRepo.getFirstRegisterName().then((prevBankName) => {
       cy.log(prevBankName);
       accountsViewRepo
@@ -103,7 +111,7 @@ describe('Accounts View', function () {
         .and('be.enabled');
 
       accountsViewRepo.getRegisterOptionsBtn().click();
-      cy.wait(300);
+      cy.wait(`@gql${graphqlOperationNames.GET_ACCOUNTS}Query`);
 
       accountsViewRepo.getRegisterOptionsDropdown().should('be.visible');
       accountsViewRepo
