@@ -2,7 +2,7 @@
 
 This repository contains an example of UI tests for financial management web application.
 
-![test results](./cypress/downloads/tests-result.JPG)
+![test results](./assets/tests-result.JPG)
 
 ## Important:
 
@@ -10,7 +10,7 @@ Tests run in headed mode. Once login data is confirmed, running is paused in ord
 
 > ❗❗❗ If it is not required (the main page is loaded), just **resume running**:
 
-![resume running](./cypress/downloads/resume-tests.JPG)
+![resume running](./assets/resume-tests.JPG)
 
 If code is required, please follow these steps:
 
@@ -40,4 +40,4 @@ Or you can open _**Cypress GUI**_ by following these steps:
 6. Choose preferred browser
 7. Now you can run all specs at once or choose one of them:
 
-![choose specs](./cypress/downloads/e2estart.JPG)
+![choose specs](./assets/e2estart.JPG)
