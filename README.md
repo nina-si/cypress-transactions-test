@@ -4,6 +4,18 @@ This repository contains an example of UI tests for financial management web app
 
 ![test results](./assets/tests-result.JPG)
 
+## Folders
+
+- File `**cypress.config.js`\*\* contains global settings for e2e tests (base url, etc.).
+- Folder **`e2e/`** contains test scenarios.
+- Folder `**fixtures/**` includes test data.
+- Folder `**support/**` contains:
+  1. File `**commands.js**` - custom commands for Cypress.
+  2. Folder `**repositories/**` - methods for getting UI elements on a specific pages/views.
+  3. Folder `**actions/**` - methods for actions that can be reused across various test scenarios (methods like fill the specific form, etc.)
+  4. Folder `**utils/**` - for some basic functions, like generating random string, and utils for intercepting graphQL requests.
+- Folders **`videos/`** and **`screenshots/`** include testing artifacts.
+
 ## Important:
 
 Tests run in headed mode. Once login data is confirmed, running is paused in order to check whether the verification code is needed.
