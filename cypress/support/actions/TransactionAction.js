@@ -56,6 +56,7 @@ class TransactionAction {
         .getToAmountField()
         .click()
         .type(maxAmount + '{enter}', { delay: 100 });
+      // wait for list to be filtered
       cy.wait(500);
     }
 

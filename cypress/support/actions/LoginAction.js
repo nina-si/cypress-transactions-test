@@ -7,8 +7,6 @@ class LoginAction {
   logIn(email, password, phone) {
     loginRepo.getEmailField().clear().type(email, { delay: 30 });
     loginRepo.getPasswordField().clear().type(password, { delay: 30 });
-    // added delay, as too fast requests are blocked
-    cy.wait(3000);
     loginRepo.getConfirmLoginBtn().click();
 
     // TODO: implement check whether digit code was sent and provide this code
